@@ -31,7 +31,7 @@ variable "app_count" {
 }
 
 variable "health_check_path" {
-  default = "/"
+  default = "/employees"
 }
 
 variable "fargate_memory" {
