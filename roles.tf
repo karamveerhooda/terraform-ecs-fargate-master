@@ -23,8 +23,35 @@ resource "aws_iam_role" "ecs_task_execution_role" {
   }
 }
 
-# ECS task execution role policy attachment
+/*# ECS task execution role policy attachment
 resource "aws_iam_role_policy_attachment" "ecs_task_execution_role" {
   role       = aws_iam_role.ecs_task_execution_role.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/ecsTaskExecutionRole"
+  #policy_arn = "arn:aws:iam::471112971975:role/ecsTaskExecutionRole"
+}*/
+
+# Attach the first policy
+resource "aws_iam_role_policy_attachment" "ecs_task_execution_role_policy1" {
+  role       = aws_iam_role.ecs_task_execution_role.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonECS_FullAccess"
+}
+
+# Attach the second policy
+resource "aws_iam_role_policy_attachment" "ecs_task_execution_role_policy2" {
+  role       = aws_iam_role.ecs_task_execution_role.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
+  
+}
+# Attach the third policy
+resource "aws_iam_role_policy_attachment" "ecs_task_execution_role_policy3" {
+  role       = aws_iam_role.ecs_task_execution_role.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSInfrastructureRolePolicyForServiceConnectTransportLayerSecurity"
+  
+}
+
+# Attach the fourth policy
+resource "aws_iam_role_policy_attachment" "ecs_task_execution_role_policy4" {
+  role       = aws_iam_role.ecs_task_execution_role.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSInfrastructureRolePolicyForVolumes"
+  
 }

@@ -1,7 +1,7 @@
 # ecs.tf
 
 resource "aws_ecs_cluster" "main" {
-  name = "AIOPS-cluster"
+  name = "DevCluster3"
   tags = {
     Environment = "AIOPS"
     Project     = "POC"
@@ -21,14 +21,14 @@ resource "aws_ecs_cluster" "main" {
 }*/
 
 resource "aws_ecs_task_definition" "app" {
-  family                   = "AIOPS-task"
+  family                   = "springboot-app-task-definition"
   execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
   cpu                      = var.fargate_cpu
   memory                   = var.fargate_memory
   container_definitions = jsonencode([{
-    name  = "my-app-container"
+    name  = "springboot-example"
     image = var.app_image
     portMappings = [{
       containerPort = var.app_port,
@@ -36,7 +36,7 @@ resource "aws_ecs_task_definition" "app" {
     }]
 
     environment = [
-      { name = "DB_HOST", value = aws_db_instance.rds_instance.rds_endpoint },
+      { name = "DB_HOST", value = "${aws_db_instance.rds_instance.endpoint}:${aws_db_instance.rds_instance.port}" },
       { name = "DB_USER", value = "root" },
       { name = "DB_PASSWORD", value = "password" },
       { name = "DB_NAME", value = "user_management" },
@@ -50,7 +50,7 @@ resource "aws_ecs_task_definition" "app" {
 }
 
 resource "aws_ecs_service" "main" {
-  name            = "AIOPS-service"
+  name            = "springboot-example-service"
   cluster         = aws_ecs_cluster.main.id
   task_definition = aws_ecs_task_definition.app.arn
   desired_count   = var.app_count
@@ -64,7 +64,7 @@ resource "aws_ecs_service" "main" {
 
   load_balancer {
     target_group_arn = aws_alb_target_group.app.id
-    container_name   = "AIOPS"
+    container_name   = "springboot-example"
     container_port   = var.app_port
   }
   tags = {
@@ -72,5 +72,5 @@ resource "aws_ecs_service" "main" {
     Project     = "POC"
   }
 
-  depends_on = [aws_alb_listener.front_end, aws_iam_role_policy_attachment.ecs_task_execution_role]
+  depends_on = [aws_alb_listener.front_end, aws_iam_role_policy_attachment.ecs_task_execution_role_policy1,aws_iam_role_policy_attachment.ecs_task_execution_role_policy2]
 }

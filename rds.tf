@@ -13,6 +13,8 @@ resource "aws_db_instance" "rds_instance" {
   instance_class = var.rds_instance_class
   engine         = var.rds_engine
   # other RDS configuration...
+  db_name                = "user_management"
+  identifier             = "user-management"
   allocated_storage      = var.rds_allocated_storage
   username               = var.rds_username
   password               = var.rds_password

@@ -17,7 +17,7 @@ variable "az_count" {
 
 variable "app_image" {
   description = "Docker image to run in the ECS cluster"
-  default     = "471112971975.dkr.ecr.us-east-1.amazonaws.com/springboot-example:86199a7a3292129f57212ef71f8e17af82036297"
+  default     = "471112971975.dkr.ecr.us-east-1.amazonaws.com/springboot-example:3da21950addf9c14412b27b32809bcff527041bf"
 }
 
 variable "app_port" {
