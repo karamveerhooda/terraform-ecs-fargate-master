@@ -12,9 +12,10 @@ resource "aws_db_subnet_group" "example" {
 resource "aws_db_instance" "rds_instance" {
   instance_class = var.rds_instance_class
   engine         = var.rds_engine
+  engine_version = "8.0.28"
   # other RDS configuration...
-  db_name                = "user_management"
-  identifier             = "user-management"
+  db_name                = "employeemanagementsystem"
+  identifier             = "employeemanagementsystem"
   allocated_storage      = var.rds_allocated_storage
   username               = var.rds_username
   password               = var.rds_password

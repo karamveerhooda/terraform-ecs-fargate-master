@@ -29,9 +29,9 @@ resource "aws_security_group" "lb" {
     from_port   = 0
     to_port     = 0
     protocol    = "tcp"
-    cidr_blocks = ["68.197.71.212/32"]  # Replace your_ip_address with your actual IP address
+    cidr_blocks = ["68.197.71.212/32"] # Replace your_ip_address with your actual IP address
   }
-    ingress {
+  ingress {
     protocol    = "-1"
     from_port   = 0
     to_port     = 0
@@ -81,11 +81,11 @@ resource "aws_security_group" "ecs_tasks" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-   ingress {
+  ingress {
     from_port   = 0
     to_port     = 0
     protocol    = "tcp"
-    cidr_blocks = ["68.197.71.212/32"]  # Replace your_ip_address with your actual IP address
+    cidr_blocks = ["68.197.71.212/32"] # Replace your_ip_address with your actual IP address
   }
 
   egress {

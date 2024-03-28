@@ -1,7 +1,7 @@
 # ecs.tf
 
 resource "aws_ecs_cluster" "main" {
-  name = "DevCluster3"
+  name = "DevCluster2"
   tags = {
     Environment = "AIOPS"
     Project     = "POC"
@@ -72,5 +72,5 @@ resource "aws_ecs_service" "main" {
     Project     = "POC"
   }
 
-  depends_on = [aws_alb_listener.front_end, aws_iam_role_policy_attachment.ecs_task_execution_role_policy1,aws_iam_role_policy_attachment.ecs_task_execution_role_policy2]
+  depends_on = [aws_alb_listener.front_end, aws_iam_role_policy_attachment.ecs_task_execution_role_policy1, aws_iam_role_policy_attachment.ecs_task_execution_role_policy2]
 }

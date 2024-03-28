@@ -17,7 +17,9 @@ variable "az_count" {
 
 variable "app_image" {
   description = "Docker image to run in the ECS cluster"
-  default     = "471112971975.dkr.ecr.us-east-1.amazonaws.com/springboot-example:3da21950addf9c14412b27b32809bcff527041bf"
+  default     = "471112971975.dkr.ecr.us-east-1.amazonaws.com/springboot-example:bea9be38fbac64a607e153de7b59c7d6b3e94b3f"
+  #471112971975.dkr.ecr.us-east-1.amazonaws.com/springboot-example:bea9be38fbac64a607e153de7b59c7d6b3e94b3f
+  #471112971975.dkr.ecr.us-east-1.amazonaws.com/springboot-example:3da21950addf9c14412b27b32809bcff527041bf
 }
 
 variable "app_port" {
@@ -27,7 +29,7 @@ variable "app_port" {
 
 variable "app_count" {
   description = "Number of docker containers to run"
-  default     = 3
+  default     = 1
 }
 
 variable "health_check_path" {
@@ -50,7 +52,7 @@ variable "rds_engine" {
 }
 variable "rds_instance_class" {
   description = "RDS Database instance type"
-  default     = "db.t2.micro"
+  default     = "db.t3.micro"
 }
 variable "rds_allocated_storage" {
   description = "RDS storage size"
