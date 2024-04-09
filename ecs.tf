@@ -1,7 +1,7 @@
 # ecs.tf
 
 resource "aws_ecs_cluster" "main" {
-  name = "DevCluster2"
+  name = "DevClusterTerraform"
   tags = {
     Environment = "AIOPS"
     Project     = "POC"
@@ -36,10 +36,11 @@ resource "aws_ecs_task_definition" "app" {
     }]
 
     environment = [
-      { name = "DB_HOST", value = "${aws_db_instance.rds_instance.endpoint}:${aws_db_instance.rds_instance.port}" },
-      { name = "DB_USER", value = "root" },
-      { name = "DB_PASSWORD", value = "password" },
-      { name = "DB_NAME", value = "user_management" },
+      #{ name = "DB_HOST", value = "${aws_db_instance.rds_instance.endpoint}:${aws_db_instance.rds_instance.port}" },
+      { name = "DB_HOST", value = "${aws_db_instance.rds_instance.endpoint}" },
+      { name = "DB_USER", value = "aiops" },
+      { name = "DB_PASSWORD", value = "capgemini" },
+      { name = "DB_NAME", value = "terraform" },
     ]
   }])
   tags = {

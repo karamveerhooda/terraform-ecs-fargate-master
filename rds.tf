@@ -1,7 +1,7 @@
 #AWS DB Subnet group
 resource "aws_db_subnet_group" "example" {
   name       = "main"
-  subnet_ids = aws_subnet.private.*.id
+  subnet_ids = aws_subnet.public.*.id
   tags = {
     Name  = "AIOPS"
     Value = "POC"
@@ -14,8 +14,8 @@ resource "aws_db_instance" "rds_instance" {
   engine         = var.rds_engine
   engine_version = "8.0.28"
   # other RDS configuration...
-  db_name                = "employeemanagementsystem"
-  identifier             = "employeemanagementsystem"
+  db_name                = "terraform"
+  identifier             = "terraform"
   allocated_storage      = var.rds_allocated_storage
   username               = var.rds_username
   password               = var.rds_password

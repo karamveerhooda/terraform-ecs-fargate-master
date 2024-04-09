@@ -2,7 +2,7 @@
 
 variable "aws_region" {
   description = "The AWS region things are created in"
-  default     = "us-east-1"
+  default     = "us-east-2"
 }
 
 variable "ecs_task_execution_role_name" {
@@ -17,7 +17,7 @@ variable "az_count" {
 
 variable "app_image" {
   description = "Docker image to run in the ECS cluster"
-  default     = "471112971975.dkr.ecr.us-east-1.amazonaws.com/springboot-example:bea9be38fbac64a607e153de7b59c7d6b3e94b3f"
+  default     = "471112971975.dkr.ecr.us-east-2.amazonaws.com/springboot-example:504dc2de748c0984272d6c0576f6164c6637a2c3"
   #471112971975.dkr.ecr.us-east-1.amazonaws.com/springboot-example:bea9be38fbac64a607e153de7b59c7d6b3e94b3f
   #471112971975.dkr.ecr.us-east-1.amazonaws.com/springboot-example:3da21950addf9c14412b27b32809bcff527041bf
 }
@@ -60,11 +60,11 @@ variable "rds_allocated_storage" {
 }
 variable "rds_username" {
   description = "RDS DB username"
-  default     = "root"
+  default     = "aiops"
 }
 variable "rds_password" {
   description = "RDS DB password"
-  default     = "password"
+  default     = "capgemini"
 }
 variable "rds_parameter_group_name" {
   description = "RDS parameter group name"
