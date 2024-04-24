@@ -100,7 +100,8 @@ resource "aws_iam_role_policy" "ecs_ssm_policy" {
           "ssm:CreateActivation",
           "ssm:AddTagsToResource",
           "ssm:DeleteActivation",
-          "ssm:DeregisterManagedInstance"
+          "ssm:DeregisterManagedInstance",
+          "iam:PassRole"
         ]
         Effect   = "Allow"
         Resource = "*"
