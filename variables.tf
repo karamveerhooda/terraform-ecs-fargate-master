@@ -78,3 +78,43 @@ variable "rds_skip_final_snapshot" {
   description = "RDS snapshot"
   default     = true
 }
+variable "ecs_task_role_name" {
+  description = "ECS task role name"
+  default     = "myEcsTaskRole"
+}
+
+variable "ecs_ssm_policy" {
+  description = "ECS SSM Policy"
+  default     = "ECSSSMPolicy"
+}
+
+variable "fis_ssm_policy" {
+  description = "FIS SSM Policy"
+  default     = "FISSSMPolicy"
+}
+
+variable "fis_execution_role" {
+  description = "FIS Role Name"
+  default     = "FISRole"
+}
+
+variable "fis_tests_active" {
+  type        = bool
+  description = "Enable SSM for FIS Tests"
+  default     = true
+}
+
+variable "ssm_register_instance_role" {
+  description = "Role given to SSM to register tasks with SSM"
+  default     = "SSMRegisterInstanceRole"
+}
+
+variable "ecs_cluster" {
+  description = "ECS Cluster name"
+  default     = "DevClusterTerraform"
+}
+
+variable "ecs_service" {
+  description = "ECS Service name"
+  default     = "springboot-example-service"
+}

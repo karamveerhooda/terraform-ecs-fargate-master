@@ -24,7 +24,10 @@ resource "aws_db_instance" "rds_instance" {
   vpc_security_group_ids = [aws_security_group.lb.id]
   skip_final_snapshot    = var.rds_skip_final_snapshot
   db_subnet_group_name   = aws_db_subnet_group.example.name
-
+  tags = {
+    Name  = "devops-guru-aiops"
+    Value = "cap"
+  }
 }
 output "rds_endpoint" {
   value = aws_db_instance.rds_instance.endpoint
