@@ -99,8 +99,6 @@ resource "aws_iam_role_policy" "ecs_ssm_policy" {
         Action = [
           "ssm:CreateActivation",
           "ssm:AddTagsToResource",
-          "ssm:DeleteActivation",
-          "ssm:DeregisterManagedInstance",
           "iam:PassRole"
         ]
         Effect   = "Allow"
@@ -142,7 +140,23 @@ resource "aws_iam_role_policy_attachment" "ssm_managed_instance_policy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 }
 
-
+resource "aws_iam_role_policy" "ecs_ssm_deregister_policy" {
+  name = var.ecs_ssm_deregister_policy
+  role = aws_iam_role.ssm_register_instance.name
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = [
+          "ssm:DeleteActivation",
+          "ssm:DeregisterManagedInstance"
+        ]
+        Effect   = "Allow"
+        Resource = "*"
+      }
+    ]
+  })
+}
 
 /** ====================================================
 * Create FIS Execution Role

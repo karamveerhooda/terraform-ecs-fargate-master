@@ -109,6 +109,12 @@ variable "ssm_register_instance_role" {
   default     = "SSMRegisterInstanceRole"
 }
 
+variable "ecs_ssm_deregister_policy" {
+  description = "Permissions given to SSM to deregister tasks with SSM"
+  default     = "SSMDeRegisterPolicy"
+}
+
+
 variable "ecs_cluster" {
   description = "ECS Cluster name"
   default     = "DevClusterTerraform"
