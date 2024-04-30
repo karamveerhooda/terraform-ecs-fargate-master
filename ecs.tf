@@ -46,8 +46,8 @@ resource "aws_ecs_task_definition" "app" {
     ]
   }])*/
   tags = {
-    Environment = "AIOPS"
-    Project     = "POC"
+    Environment       = "AIOPS"
+    Project           = "POC"
     devops-guru-aiops = "cap"
   }
   depends_on = [aws_db_instance.rds_instance]
@@ -72,8 +72,8 @@ resource "aws_ecs_service" "main" {
     container_port   = var.app_port
   }
   tags = {
-    Environment = "AIOPS"
-    Project     = "POC"
+    Environment       = "AIOPS"
+    Project           = "POC"
     devops-guru-aiops = "cap"
   }
 
@@ -81,8 +81,8 @@ resource "aws_ecs_service" "main" {
 }
 
 resource "aws_appautoscaling_target" "ecs_target" {
-  max_capacity       = 2
-  min_capacity       = 1
+  max_capacity       = 3
+  min_capacity       = 2
   resource_id        = "service/${aws_ecs_service.main.cluster}/${aws_ecs_service.main.name}"
   scalable_dimension = "ecs:service:DesiredCount"
   service_namespace  = "ecs"

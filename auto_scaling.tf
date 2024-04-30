@@ -57,9 +57,10 @@ resource "aws_cloudwatch_metric_alarm" "service_cpu_high" {
   evaluation_periods  = "2"
   metric_name         = "CPUUtilization"
   namespace           = "AWS/ECS"
-  period              = "60"
-  statistic           = "Average"
-  threshold           = "95"
+  period              = "10"
+  statistic           = "Maximum"
+  threshold           = "80"
+  datapoints_to_alarm = "2"
 
   dimensions = {
     ClusterName = aws_ecs_cluster.main.name

@@ -12,7 +12,7 @@ resource "aws_db_subnet_group" "example" {
 resource "aws_db_instance" "rds_instance" {
   instance_class = var.rds_instance_class
   engine         = var.rds_engine
-  engine_version = "8.0.28"
+  engine_version = "8.0.35"
   # other RDS configuration...
   db_name                = "terraform"
   identifier             = "terraform"

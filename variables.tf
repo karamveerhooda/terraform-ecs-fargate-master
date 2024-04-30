@@ -88,16 +88,6 @@ variable "ecs_ssm_policy" {
   default     = "ECSSSMPolicy"
 }
 
-variable "fis_ssm_policy" {
-  description = "FIS SSM Policy"
-  default     = "FISSSMPolicy"
-}
-
-variable "fis_execution_role" {
-  description = "FIS Role Name"
-  default     = "FISRole"
-}
-
 variable "fis_tests_active" {
   type        = bool
   description = "Enable SSM for FIS Tests"
@@ -115,12 +105,4 @@ variable "ecs_ssm_deregister_policy" {
 }
 
 
-variable "ecs_cluster" {
-  description = "ECS Cluster name"
-  default     = "DevClusterTerraform"
-}
 
-variable "ecs_service" {
-  description = "ECS Service name"
-  default     = "springboot-example-service"
-}
