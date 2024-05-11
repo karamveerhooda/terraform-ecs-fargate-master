@@ -17,7 +17,7 @@ variable "az_count" {
 
 variable "app_image" {
   description = "Docker image to run in the ECS cluster"
-  default     = "471112971975.dkr.ecr.us-east-2.amazonaws.com/springboot-example:504dc2de748c0984272d6c0576f6164c6637a2c3"
+  default     = "471112971975.dkr.ecr.us-east-2.amazonaws.com/springboot-example:e1001992a322aa56f353da9da6a05500cad53619"
   #471112971975.dkr.ecr.us-east-1.amazonaws.com/springboot-example:bea9be38fbac64a607e153de7b59c7d6b3e94b3f
   #471112971975.dkr.ecr.us-east-1.amazonaws.com/springboot-example:3da21950addf9c14412b27b32809bcff527041bf
 }
@@ -33,7 +33,7 @@ variable "app_count" {
 }
 
 variable "health_check_path" {
-  default = "/employees"
+  default = "/actuator/health"
 }
 
 variable "fargate_memory" {
@@ -103,6 +103,5 @@ variable "ecs_ssm_deregister_policy" {
   description = "Permissions given to SSM to deregister tasks with SSM"
   default     = "SSMDeRegisterPolicy"
 }
-
 
 
